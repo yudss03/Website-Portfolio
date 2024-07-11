@@ -16,6 +16,28 @@ body {
   overflow-x: hidden;
 }
 
+#darkmode {
+  background-color: var(--background-color);
+  color: var(--main-color);
+}
+
+#darkmode button {
+  background-color: var(--main-color);
+  color: var(--second-color);
+}
+
+#darkmode .navbar {
+  background-color: var(--background-color);
+  color: var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+}
+
+#darkmode button:hover {
+  background-color: var(--background-color);
+  color: var(--main-color);
+  outline: 1px solid var(--main-color);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -23,30 +45,33 @@ html {
 :root {
   --main-color: #faf9f6;
   --second-color: #0D0907;
+
+  /* Darkmode color */
+
+  --background-color: #161616;
+  --secondary-dark-color: #818181;
 }
 
 /* NAVBAR */
 .navbar {
+  position: sticky;
   width: 100%;
   background-color: var(--main-color);
-  border-bottom:1px solid #0D0907;
+  border-bottom:1px solid var(--second-color);
 }
 
 .navbar-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin-right: 6rem;
-  margin-left: 6rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  z-index: 1;
+ display: flex;
+ padding: 1.5rem;
+ justify-content: space-around;
 }
 
 .navbar-contents {
-  margin-left: 25rem;
   display: flex;
   gap: 1rem;
   font-size: 1rem;
+  margin-left: 2rem;
 }
 
 .navbar-content:hover {
@@ -56,9 +81,19 @@ html {
 
 .navbar-extra {
   cursor: pointer;
+  position: relative;
   margin-left: 5rem;
   font-size: 1.2rem;
   display: flex;
+  gap: 1rem;
+}
+
+.theme-change {
+  position: absolute;
+}
+
+.theme-change:hover {
+  color: gray;
 }
 
 .hamburger {
@@ -69,43 +104,127 @@ html {
   font-weight: bold;
 }
 
+
+.sidebar .navbar-contents {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+/* PROFILE STYLE CODE */
+.profile {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  margin-top: 6rem;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.profile-pic img {
+  width: 300px;
+  height: 300px;
+  -moz-filter: drop-shadow(0 0 10px var(--main-color));
+  -webkit-filter: drop-shadow(0 0 10px var(--main-color));
+  filter: drop-shadow(0 0 10px var(--main-color));
+}
+
+.profile-text span {
+  font-size: 1rem;
+}
+
+.profile-text h1 {
+  font-size: 2rem;
+}
+
+.profile-text p {
+  font-size: 1.2rem;
+}
+
+.profile-text button {
+  background-color: var(--second-color);
+  color: var(--main-color);
+  padding: .7rem;
+  border: none;
+  margin-top: 1rem;
+  border-radius: 50px;
+}
+
+.profile-text button:hover {
+  background-color: var(--main-color);
+  color: var(--second-color);
+  outline: 1px solid var(--second-color);
+}
+
+.social-media {
+  position: absolute;
+  bottom: 7rem;
+  left: 5rem;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  flex-direction: column;
+}
+
+.social-media i:hover {
+  color: gray;
+}
+/* PROFILE STYLE CODE END */
+
 /* NAVBAR END */
 /* RESPONSIVE CODE */
 
 /* Laptop */
-@media (max-width: 1366px) {
-  html {
-    font-size: 100%;
-  }
-}
 /* Tablet */
 
-@media (max-width: 768px) {
-  html {
-    font-size: 62.5%;
+@media only screen and (max-width: 768px) {
+  #darkmode .navbar-contents {
+    background-color: var(--background-color);
+    color: var(--main-color);
   }
 
-  .navbar-container {
-    padding: 1rem 3%;
-    margin: 0;
+  /* NAVBAR FOR RESPONSIVE CODE */
+  .navbar-container .navbar-contents {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 16rem;
+    height: auto;
+    background-color: var(--main-color);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    z-index: -5;
+    transform: translateX(100%);
+    margin-top: 4.5rem;
+    transition: all .5s ease;
   }
 
-  .navbar-contents {
-    display: none;
+  .navbar-contents.slide {
+    transform: translateX(0);
   }
 
   .theme-change {
-    display: none;
+    left: 3.5rem;
   }
 
   .hamburger {
     display: flex;
+    align-items: center;
   }
+
+  .hamburger:hover {
+    color: gray;
+  }
+  /* NAVBAR RESPONSIVE CODE END */
+
+
 }
 /* Mobile */
-@media (max-width: 450px) {
-  html {
-    font-size: 55%;
-  }
-}
 /* RESPONSIVE CODE END */
